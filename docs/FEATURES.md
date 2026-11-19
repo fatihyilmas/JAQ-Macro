@@ -28,7 +28,13 @@ An example does not create unseen object detail or guarantee recognition under e
 
 ## Coordinate navigation
 
-Read world position with local OCR; establish axis signs and real movement keys. Select ground clicks, keyboard guidance or recording. Arrow-guided movement needs a reliable learned arrow and consistent map orientation. Configure tolerance, waypoints and practical movement limits. Optional arrival actions happen only after verified arrival.
+Read world position with local OCR and establish axis signs and movement keys. Select ground clicks, keyboard guidance or route recording. Keyboard guidance can infer heading from coordinate changes or read a direction arrow. Configure tolerance, waypoints and practical movement limits. Optional arrival actions happen only after verified arrival.
+
+## Gallery, search and run controls
+
+Use Gallery to browse, import and preview project images. The Find image module can pick from the same library. The shared search box filters image names in Gallery and finds workflow steps by module or setting in Flows.
+
+Use the draggable run panel to monitor a full flow or a group and access the configured stop shortcuts. The tray menu keeps those controls accessible when the studio is hidden.
 
 ## Workflow structure and formulas
 

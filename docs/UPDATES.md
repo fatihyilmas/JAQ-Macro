@@ -1,22 +1,17 @@
 # Downloads and updates
 
-## This release is a distribution test
+## Windows download
 
-The `2.0.12-preview.1` release is explicitly documentation-only. Its ZIP contains `README.md`, `LICENSE.md` and `UPDATE-TEST.md`. It has no EXE, DLL, installer, source code, license key or embedded account credentials. It is not a runnable application download.
+Version 2.0.27 is available as a portable ZIP for Windows x64. Extract all files into a writable folder, keep the `lang` folder next to `JAQ-MACRO.exe`, and open the executable. The desktop build requests Windows administrator approval. `SHA256SUMS.txt` lists the ZIP checksum.
 
-## In-application flow
+[Latest release](https://github.com/fatihyilmas/JAQ-Macro/releases/latest)
 
-1. Check the public release metadata in the background, with cached checks and a non-blocking failure path when offline.
-2. Show the installed version beside the logo. Mark newer packages and distinguish a documentation test from an actual application update.
-3. Let the user download the ZIP. Verify the publisher signature, archive size/hash and declared file list.
-4. Ask for extraction/installation consent separately. Declining leaves application files unchanged.
-5. For this preview, extract documents into a separate `Update-Test` subdirectory. No application replacement or restart is required.
-6. For a future application package, require an idle saved workspace, stage verified files, close the application and apply through a verified helper process. Keep a recovery backup and restore changed files if application fails.
+## In-application updates
 
-## Publisher authenticity
+1. JAQ Macro checks GitHub Releases for a newer application package. The version control opens installed version information and shows when an update is available.
+2. If you select Download, JAQ Macro verifies the publisher signature, ZIP size and checksum, and the declared file list.
+3. Installation requires separate confirmation and an idle, saved workspace. JAQ Macro stages the verified files, applies them through a helper and restarts. The updater keeps a recovery backup for failures.
 
-The `jaq-update.json` release asset is an ECDSA P-256 signed descriptor. Its signature is verified against the public key pinned in the application. The archive digest and file hashes are authenticated by that signature. The private signing key is never included in the repository or assets.
+The ECDSA P-256 signature in `jaq-update.json` authenticates the update descriptor and its file hashes using the publisher public key pinned in the app. Windows Authenticode signing is separate and this portable EXE has no Authenticode signature.
 
-Ordinary users should not edit the descriptor or rename package contents. Automatic installation rejects unsafe paths, protected user-data locations, unexpected entries and incorrect hashes. Workflows/settings are not intended to be overwritten by application packages.
-
-Download and test only official assets from this repository. Source archives automatically shown by GitHub contain the public documentation repository, not the proprietary application source.
+The older `2.0.12-preview.1` release remains a documentation-only channel test. Its ZIP contains Markdown files and extracts into a separate `Update-Test` folder when used through the updater.

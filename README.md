@@ -1,78 +1,59 @@
 # JAQ Macro
 
-### Visual automation. State-aware workflows. AI-assisted design.
+JAQ Macro is a visual automation studio for Windows. Build workflows that find images and objects, read on-screen text and decide what to do based on the result. Connect an MCP-compatible AI assistant when you want help planning or editing a workflow.
 
-JAQ Macro brings visual workflow editing, object tracking, coordinate feedback, OCR and MCP-connected assistants into one Windows automation workspace.
+**Latest release · 2.0.27 for Windows x64**
 
-**This repository is the public product and release hub. The application is proprietary, and its source code is not published here.**
+[Download the ZIP](https://github.com/fatihyilmas/JAQ-Macro/releases/download/v2.0.27/JAQ-MACRO-2.0.27-win-x64.zip) · [Release notes and checksums](https://github.com/fatihyilmas/JAQ-Macro/releases/tag/v2.0.27)
 
-> **Current release: documentation-only distribution test.** The attached ZIP contains Markdown documents only. It does not contain an executable, installer, application source code or license keys. A runnable application download is not being offered yet.
+![English JAQ Macro workflow editor with a sample workflow](docs/images/workflow-studio.webp)
 
-[Latest releases](https://github.com/fatihyilmas/JAQ-Macro/releases) · [Feature guide](docs/FEATURES.md) · [Workflow examples](docs/EXAMPLES.md) · [Update and download guide](docs/UPDATES.md)
+## What's new in 2.0.27
 
-![Actual English JAQ Macro interface from an internal example workspace](docs/images/ana-ekran.webp)
+- **Image Gallery.** Browse project images in a four-column grid, open larger previews, import batches and delete unused images. Pick a saved image directly from the Find image module.
+- **Workflow search.** Use the search box to find steps by name, module or setting. The same box filters images when the Gallery is open.
+- **Coordinate navigation.** Guide movement using changes in the observed coordinates or a tracked direction arrow. Configure waypoints, movement keys, calibration and arrival checks.
+- **Run controls.** Run the full workflow or an individual group. The draggable panel shows run status and stop shortcuts over the target window. Minimize the studio to the Windows notification area for quick access.
 
-## Beyond replaying the same clicks
+| Image Gallery | Workflow search |
+| --- | --- |
+| [![Image Gallery with four example assets](docs/images/image-gallery.webp)](docs/images/image-gallery.webp) | [![Search results for interface-related steps](docs/images/workflow-search.webp)](docs/images/workflow-search.webp) |
 
-A button can move. A window can load slowly. A target can disappear. JAQ Macro is designed to connect **observation → decision → action → verification**, rather than assume every replay encounters the same scene.
+## Build workflows around what appears on screen
 
-- **15 visual modules:** Window, Wait, Variable, Condition, Loop, Go to group, Call group, Return, Stop, Mouse, Keyboard, Find image, Program/files, Read text and Coordinate navigation.
-- **Object recognition and tracking:** exemplar-based VOT Alpha, trained YOLO11 ONNX and automatic hybrid options; DirectML GPU/CPU inference where supported.
-- **A visual training workspace:** annotation, GrabCut background separation, Alpha masks, 360° Copy-Paste synthetic-data preparation and configurable appearance filtering.
-- **Coordinate feedback:** local OCR, configurable axes, motion/arrow heading sources, waypoints, tolerance and optional pre-movement/verified-arrival actions.
-- **Route recording:** keyboard/mouse events, scan-code options, checkpoints, playback timing and optional coordinate verification.
-- **Structured logic:** true/false branches, nested conditions, bounded loops, variables, 32 built-in functions and reusable helper groups.
-- **MCP-assisted design:** compatible assistants can inspect workflow metadata, understand real module settings and continue from task checkpoints.
-- **Observable execution:** dry run, individual/group tests, logs, limits, result variables and emergency-stop shortcuts.
+| What you need | What JAQ Macro can do |
+| --- | --- |
+| Find a target that moves | Search a window or region for image templates, trained objects, pixel colors or color coverage. |
+| Read visible information | Use Windows or Paddle OCR locally, or configure optional AI OCR. Use the result in later steps. |
+| Act on the result | Combine window checks, mouse and keyboard actions, typed variables, conditions and bounded loops. Organize repeated actions into callable groups. |
+| Verify movement | Read position with OCR, guide movement using coordinate feedback, or play back a recorded route with checkpoints. |
+| Troubleshoot a flow | Use dry runs, run a group independently, inspect logs and result variables, and stop with a keyboard shortcut. |
 
-## Object tracking at the center
+The object library supports exemplar-based tracking and YOLO11 ONNX models. Annotation tools, background separation and masks help prepare examples. Test a match and inspect its location and bounds before adding an action.
 
-Prepare a target example, separate unnecessary background, choose an engine and inspect the actual result before adding an action. An overlay can show location and detected bounds; a workflow decides what to do with that observation.
+| Object detection in the original JAQ demo | Coordinate navigation inspector |
+| --- | --- |
+| [![A detected object outlined in the original JAQ demo](docs/images/object-tracking.webp)](docs/images/object-tracking.webp) | [![Coordinate navigation settings in the English inspector](docs/images/coordinate-navigation.webp)](docs/images/coordinate-navigation.webp) |
 
-![Actual local detector match in an original JAQ demo scene](docs/images/demo-nesne-takibi.webp)
+Capture and input support depend on the target application. Test workflows in the environment where they will run.
 
-*The illustrated world was created specifically for JAQ and contains no third-party game assets. The image shows a local detector result in that controlled demo, not a commercial-game performance or compatibility benchmark.*
+[Full feature guide](docs/FEATURES.md) · [Workflow examples](docs/EXAMPLES.md)
 
-![Object training options in the actual English interface](docs/images/nesne-demo-2.webp)
+## Design a workflow with an AI assistant
 
-## Design with your assistant
+Open the MCP connection area in JAQ Macro and copy the quick-start instructions into a compatible client such as Codex, Claude Code, Kiro or Antigravity. With a compatible connection and account access, the assistant can inspect the current project, look up module settings, edit the workflow and resume a design task from a checkpoint. Image assets stay on your computer. Run and verify the workflow in JAQ Macro.
 
-Use an MCP-capable client such as **Codex, Antigravity, Kiro, Claude Code, Cursor or another compatible tool**, subject to its current transport and authentication support. The central guide, module contract and design-task checkpoints help the assistant work with the actual project rather than invent unsupported steps.
+A good first request describes the starting state, the desired result and how to verify it.
 
-Example request:
+> The application is already open. Add a window check, wait until the Start button is visible, click it once and verify that the next screen appears. If a reference image is missing, tell me which area to capture in JAQ Macro. Use a bounded retry and show me how to test the group.
 
-> Inspect my open project and its timestamp. Preserve existing resources. Separate preparation, main actions and recovery. Use reusable groups for repeated checks, bounded loops for repetition and conditions for missing targets. Ask only for local image selections that are actually necessary, then validate the design.
+## Get started
 
-Client names do not imply formal partnerships. MCP exposes workflow tools; local execution remains a separate, user-controlled step. Image files are not uploaded/downloaded through MCP.
+1. Download **JAQ-MACRO-2.0.27-win-x64.zip** from Releases.
+2. Extract the complete ZIP into a writable folder and keep the `lang` folder alongside `JAQ-MACRO.exe`.
+3. Open `JAQ-MACRO.exe` and approve the Windows administrator request. The interface is available in English and Turkish.
+4. Add a target window, build a short flow and test the group before running the full project.
 
-## Compare approaches, not marketing claims
+This repository is the public download and documentation hub for proprietary JAQ Macro software. GitHub's generated source archives contain the public documentation and images.
 
-| Need | Input recording alone | JAQ Macro approach |
-|---|---|---|
-| A target moves | Revisit recorded positions | Locate with image/object observations |
-| The interface loads at variable speed | Guess a fixed delay | Wait for an observed state |
-| Work depends on visible text | Additional recognition is needed | Local OCR and optional AI OCR |
-| An action should depend on a result | A fixed sequence does not decide | Conditions, typed variables and formulas |
-| A long project repeats common tasks | Maintain repeated sequences | Groups, calls, returns and shared checks |
-| A destination must be verified | Input duration alone cannot verify arrival | Coordinate OCR and movement feedback |
-| AI should edit the actual project | Recording alone does not expose a contract | MCP metadata tools, central guidance and task tracking |
-
-This compares methods, not named competing products. It does not claim every other tool lacks these capabilities.
-
-## Desktop tasks and game workflows
-
-Build from the actual starting state: an application may already be open at the relevant screen. Connect window checks, image/OCR observations and input without adding unnecessary launch steps. Recheck the result after acting.
-
-Input and capture behavior vary by application. Background window messages have limitations; Raw Input/DirectInput compatibility is not universal. Coordinate navigation is not a universal obstacle/pathfinding engine. Use software only where permitted and test the target environment.
-
-## Downloads and updates
-
-Release ZIPs are published under [Releases](https://github.com/fatihyilmas/JAQ-Macro/releases), not as application source. The current preview tests the distribution channel with harmless documents only.
-
-The application update design verifies a signed descriptor, archive size/hash and declared file contents. Downloading does not authorize installation: extraction/replacement requires a separate confirmation. Application updates wait for an idle, saved workspace; documentation tests extract into a separate `Update-Test` directory and never replace the application.
-
-## Licensing and security
-
-JAQ Macro is proprietary. Public availability of this repository does not grant access to application source or permission to redistribute internal builds. Read [LICENSE.md](LICENSE.md). MCP access and Pro file-transfer entitlements are separate; AI provider usage may have separate costs.
-
-Do not post passwords, license keys, MCP tokens, API credentials or private workflow backups in public issues. See [SECURITY.md](SECURITY.md).
+[Downloads and updates](docs/UPDATES.md) · [License](LICENSE.md) · [Security](SECURITY.md)
