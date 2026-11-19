@@ -11,7 +11,7 @@
 
 ## Follow an object
 
-Create a local object example, annotate it tightly, inspect the Alpha mask and try instant tracking. Test motion and disappearance. In Find image, select the resource and enter `Target` as the result name. Check `Target` for a match and `Target_Applied` if the step is also configured to perform an action. Never reuse a stale coordinate after a missing target.
+Create a local object example, annotate it tightly, inspect the alpha mask and try instant tracking. Test motion and disappearance. In Find image, select the resource and set the search output prefix to `Target`. Check `Target_Found` before using the location or score. If you also set a named step outcome such as `Scan`, `Scan` indicates success and `Scan_Applied` tells you whether a configured action was sent. Never reuse a stale coordinate after a missing target.
 
 ## Read a value and decide
 
