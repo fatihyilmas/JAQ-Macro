@@ -1,14 +1,38 @@
 # JAQ Macro
 
-**Visual workflow automation, object tracking, coordinate navigation and MCP-assisted authoring for Windows.**
+**Describe the macro you want. Build it with your AI assistant through MCP. Run it in JAQ Macro for Windows.**
 
-JAQ Macro brings **15 visual workflow modules**, **32 built-in formula functions**, multiple screen-reading methods and an AI-assisted editor into one application. A workflow can identify the right window, wait for a visual state, act on what it finds and verify the result before proceeding. It can also follow a route using live coordinates or ask a compatible AI assistant to build and revise its decision logic.
+JAQ Macro connects compatible AI assistants such as **Codex, Claude Code, Kiro and Antigravity** to the visual workflow editor through the **Model Context Protocol (MCP)**. Describe what should happen in everyday language. The assistant can inspect the open project, use existing resources and turn your instructions into editable steps using **15 workflow modules** and **32 formula functions**.
 
 **Current download · 2.0.27 for Windows x64** · [Download the Windows ZIP](https://github.com/fatihyilmas/JAQ-Macro/releases/download/v2.0.27/JAQ-MACRO-2.0.27-win-x64.zip) · [Release notes and checksums](https://github.com/fatihyilmas/JAQ-Macro/releases/tag/v2.0.27)
 
-![English JAQ Macro workflow editor with an example window check, wait and conditional branch](docs/images/workflow-studio.webp)
+[Start with AI and MCP](#mcp-and-ai-assisted-authoring) · [Module reference](#all-15-workflow-modules) · [Visual detection and tracking](#visual-detection-and-tracking) · [Coordinate navigation](#coordinate-navigation) · [Conditions and formulas](#conditions-variables-and-formulas) · [Get started](#get-started)
 
-[Module reference](#all-15-workflow-modules) · [Visual detection and tracking](#visual-detection-and-tracking) · [Coordinate navigation](#coordinate-navigation) · [Windows and input](#windows-and-input) · [Conditions and formulas](#conditions-variables-and-formulas) · [MCP and AI](#mcp-and-ai-assisted-authoring) · [Get started](#get-started)
+## MCP and AI-assisted authoring
+
+Start with a simple request or build a multi-group project over several sessions. Tell your assistant which application is open, what you want to happen and how you recognize success. It can assemble the window checks, image searches, OCR steps, conditions, formulas, retries and reusable groups, then revise the workflow as you test it.
+
+> My launcher is already open. Check whether Update is visible. If it is, apply it and wait for the ready screen. Then click Start once and confirm that the next window appears. Reuse my existing images. If a reference is missing, tell me exactly what to capture in JAQ Macro.
+
+<p align="center">
+  <img src="docs/images/mcp-ai-authoring.jpg" width="480" alt="Concept illustration of a natural-language request becoming an editable JAQ Macro workflow">
+</p>
+
+*Concept illustration of AI-assisted authoring. In the released workflow, the conversation takes place in a connected MCP client and the steps appear in the JAQ Macro editor.*
+
+### From a request to a working macro
+
+1. **Connect your assistant.** In the account’s MCP area, choose **Copy AI quick start** and configure remote MCP over Streamable HTTP in your client. Keep the connection token in your client’s private configuration.
+2. **Describe the goal.** The assistant can use `get_authoring_context` to read the module catalog and current project context, then use `get_program_contract` for the settings of the modules it needs.
+3. **Reuse references or capture what is missing.** If a visual reference is needed, capture it locally in JAQ Macro and give it a clear name, such as **Update button** or **Ready screen**. The assistant can reuse existing project references.
+4. **Build and revise the flow.** The assistant can write targeted edits, check whether they reached the editor and save a design checkpoint when it needs to wait for a capture or a test. Ask it to improve a single group or extend the workflow across several groups.
+5. **Review and run.** Inspect the generated steps, test a group or use a dry run, then press Start in JAQ Macro. Visual asset bytes stay on the computer during MCP authoring.
+
+Capability discovery, module documentation and status checks are free of JAQ credit charges. Project reads and edits use JAQ credits under the account’s usage rules. The AI client’s own usage limits apply separately. [Connection security](SECURITY.md#mcp-connection-security)
+
+### Review the result in JAQ Macro
+
+![Actual English JAQ Macro editor with example window, wait and conditional steps](docs/images/workflow-studio.webp)
 
 ## What makes JAQ Macro different
 
@@ -140,20 +164,6 @@ For example, `IFERROR(NUMBER(TRIM(Price_Text)); -1)` converts an OCR value to a 
 | Image Gallery | Workflow search |
 | --- | --- |
 | [![Gallery showing four reusable visual assets](docs/images/image-gallery.webp)](docs/images/image-gallery.webp) | [![Workflow search results in the English interface](docs/images/workflow-search.webp)](docs/images/workflow-search.webp) |
-
-## MCP and AI-assisted authoring
-
-Connect a compatible client such as **Codex, Claude Code, Kiro or Antigravity** through remote MCP over Streamable HTTP. Copy the connection quick-start from JAQ Macro. Client setup and service access depend on the client and account.
-
-1. Start with `get_authoring_context` to discover the module catalog, current device/project context and active design checkpoints.
-2. Read relevant module fields and defaults through `get_program_contract`, then inspect the relevant part of the workflow.
-3. Ask the user to capture any missing visual references in JAQ Macro. Reuse the images, steps and groups already present in the project.
-4. Draft conditions, formulas and recovery behavior. Apply focused changes and check delivery status. A design checkpoint can preserve the next action while a local capture is pending.
-5. Review and start the workflow in the Windows application. MCP manages workflow metadata and design. Visual asset bytes stay local, and running the flow requires a local start.
-
-Discovery, module documentation and status checks can be used without a project-read charge. Project inspection and edits use JAQ credits under the account’s usage rules. AI provider usage is handled separately.
-
-> My launcher is already open. Check its window, detect whether Update is present, and only click Start after the ready screen is verified. Reuse my existing images. If a reference is missing, tell me which area to capture in JAQ Macro. Add a bounded retry and show me how to test the group.
 
 ## Get started
 
